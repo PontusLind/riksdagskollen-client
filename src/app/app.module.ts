@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { PartyComponent } from './party/party.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { ApiService } from './Shared/api.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
