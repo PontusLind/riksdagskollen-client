@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from '../Shared/api.service';
+import { Parti, Ledamot } from '../Shared/classes.service';
 import { error } from 'util';
 
 @Component({
@@ -18,7 +19,7 @@ export class PartyComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.selectedParty = params['selectedParty']);
     if (this.selectedParty != undefined) {
       this.api.getParti(this.selectedParty).subscribe(
-        (response) => {const data = response.json(); console.log(data)},
+        (parti : Parti) => console.log(parti),
         (error) => console.log(error)
       );    
     }

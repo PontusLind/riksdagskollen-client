@@ -14,6 +14,8 @@ import { PartyComponent } from './party/party.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ApiService } from './Shared/api.service';
+import { Ledamot, LedamotProcent, Parti, PartiProcent, PersonR  } from './Shared/classes.service';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -42,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ApiService],
+  providers: [ApiService, Ledamot, LedamotProcent, Parti, PartiProcent, PersonR],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

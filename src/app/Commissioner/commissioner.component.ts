@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from '../Shared/api.service';
+import { Ledamot, PersonR } from '../Shared/classes.service';
 import { error } from 'util';
 
 
@@ -18,10 +19,12 @@ export class CommissionerComponent implements OnInit {
     this.selectedCommissioner = this.route.snapshot.params['selectedCommissioner'];
     this.route.params.subscribe((params: Params) => this.selectedCommissioner = params['selectedCommissioner']);
     if (this.selectedCommissioner != undefined)   {
+
       this.api.getLedamot(this.selectedCommissioner).subscribe(
-        (response) => {const data = response.json(); console.log(data)},
+        (ledamot : Ledamot []) => console.log(ledamot),
         (error) => console.log(error)
       );
+      
       this.api.getLedamotRiksdagAPI(this.selectedCommissioner).subscribe(
         (response) => {const data = response.json(); console.log(data)},
         (error) => console.log(error)
