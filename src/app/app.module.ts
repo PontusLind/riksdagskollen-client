@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -15,6 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ApiService } from './Shared/api.service';
 import { Ledamot, LedamotProcent, Parti, PartiProcent, PersonR  } from './Shared/classes.service';
+import { BarComponent  } from './Shared/bar.component';
+import { DataManagerService  } from './Shared/dataManager.service';
 
 
 const appRoutes: Routes = [
@@ -36,15 +39,17 @@ const appRoutes: Routes = [
     HomeComponent,
     PartyComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    BarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ChartsModule
   ],
-  providers: [ApiService, Ledamot, LedamotProcent, Parti, PartiProcent, PersonR],
+  providers: [ApiService, Ledamot, LedamotProcent, Parti, PartiProcent, PersonR, DataManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
