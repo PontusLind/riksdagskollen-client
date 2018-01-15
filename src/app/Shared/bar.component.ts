@@ -6,7 +6,6 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
 @Component({
     selector: 'app-bar',
     template: `
-
     <div>
   <canvas
       baseChart
@@ -22,7 +21,6 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
   })
 
   export class BarComponent implements OnChanges{
-
       label: string [] =  [];
       @Input() data: ChartData [];
       @Input() topText: string ;
@@ -44,13 +42,10 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
         }
       }
     
-
         chartOptions = {
           responsive: true
         };
         
-
-
         chartData = [
           { data: [330], label: 'Account A' },
           { data: [120], label: 'Account B' },
@@ -73,7 +68,6 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
           });
           console.log("Label " + this.label);
         }
-        
     }
     
     class ChartData 
@@ -81,5 +75,4 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
       data: number [];
       label: string;
     }
-  
   
