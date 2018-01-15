@@ -6,7 +6,6 @@ import { concat } from 'rxjs/operator/concat';
 export class DataManagerService {    
     
     transformPartiProcent(partiProcent : PartiProcent []){   
-        console.log(partiProcent);
         let listOfPartys : Party [];
 
         for (let p of partiProcent) {
@@ -37,9 +36,9 @@ export class DataManagerService {
         let chartData;
         for (let index = 0; index < listOfPartys.length; index++) {
             if (chartData == undefined) {
-                chartData = [{ data: listOfPartys[index].percent / listOfPartys[index].quantity , label: listOfPartys[index].party }];            
+                chartData = [{ data: [listOfPartys[index].percent / listOfPartys[index].quantity] , label: listOfPartys[index].party }];            
             }else{
-                chartData.push( { data: listOfPartys[index].percent / listOfPartys[index].quantity , label: listOfPartys[index].party });            
+                chartData.push( { data: [listOfPartys[index].percent / listOfPartys[index].quantity] , label: listOfPartys[index].party });            
             }
         }
         return chartData;

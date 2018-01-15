@@ -7,6 +7,7 @@ import { DataManagerService } from '../Shared/dataManager.service';
 import { PartiProcent, Ledamot, PersonR } from '../Shared/classes.service';
 import { error } from 'util';
 import { Chart } from 'chart.js';
+import { concat } from 'rxjs/operators/concat';
 
 @Component({
   selector: 'app-home',
@@ -30,27 +31,7 @@ export class HomeComponent implements OnInit {
     this.api.getPartiProcent().subscribe(
       (partiProcent : PartiProcent []) => {
         this.data = this.dataManager.transformPartiProcent(partiProcent);
-        this.topText ="Change";
-        this.chart = new Chart('canvas', {
-          type: 'bar',
-          data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-            datasets: [
-              {
-                label: "Population (millions)",
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                data: [2478,5267,734,784,433]
-              }
-            ]
-          },
-          options: {
-            legend: { display: false },
-            title: {
-              display: true,
-              text: 'Predicted world population (millions) in 2050'
-            }
-          }  
-        })  },
+        },
         (error) => console.log(error),
   
     );

@@ -1,11 +1,4 @@
-<p>
-  home works!
-</p>
-<div *ngIf="chart" >
-  <canvas id="canvas" width="800" height="450">{{ chart }}</canvas>
-</div>
-
-<div *ngIf="topText != undefined">
+<div *ngIf="data != undefined">
   <app-bar [data] = "data" [topText]="topText"></app-bar>
 </div>
 

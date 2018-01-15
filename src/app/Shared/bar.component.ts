@@ -7,12 +7,12 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
     selector: 'app-bar',
     template: `
 
-    <div style="width: 40%;">
+    <div>
   <canvas
       baseChart
       [chartType]="'bar'"
-      [datasets]="chartData"
-      [labels]="chartLabels"
+      [datasets]="data"
+      [labels]="label"
       [options]="chartOptions"
       [legend]="true"
       (chartClick)="onChartClick($event)">
@@ -24,13 +24,24 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
   export class BarComponent implements OnChanges{
 
       label: string [] =  [];
-      @Input() data: object [];
+      @Input() data: ChartData [];
       @Input() topText: string ;
       dataLabel: string ;
 
       ngOnChanges(changes) {
         console.log(changes);
-        this.barChartSerData(changes.data.currentValue);
+        if (changes.currentValue != undefined) {
+          let data = changes.currentValue as ChartData [];
+          console.log(data);
+          for (let index = 0; index < data.length; index++) {
+            this.label.push(data[index].label); 
+          }
+          this.data = data;
+          this.data.forEach(element => {
+            console.log("Data " + element.label + " " + element.data);
+          });
+          console.log("Label " + this.label);
+        }
       }
     
 
@@ -41,9 +52,9 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
 
 
         chartData = [
-          { data: [330, 600, 260, 700], label: 'Account A' },
-          { data: [120, 455, 100, 340], label: 'Account B' },
-          { data: [45, 67, 800, 500], label: 'Account C' }
+          { data: [330], label: 'Account A' },
+          { data: [120], label: 'Account B' },
+          { data: [45], label: 'Account C' }
         ];
       
         chartLabels = ['January', 'February', 'Mars', 'April'];
@@ -52,14 +63,14 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
           console.log(event);
         }
 
-        barChartSerData(data){
-          console.log(data);
+        barChartSerData(data : ChartData []){
           for (let index = 0; index < data.length; index++) {
             this.label.push(data[index].label); 
-            console.log(data[index].label); 
           }
           this.data = data;
-          console.log("Data " + this.data);
+          this.data.forEach(element => {
+            console.log("Data " + element.label + " " + element.data);
+          });
           console.log("Label " + this.label);
         }
         
@@ -67,7 +78,7 @@ import { SimpleChange } from '@angular/core/src/change_detection/change_detectio
     
     class ChartData 
     {
-      data: number;
+      data: number [];
       label: string;
     }
   
