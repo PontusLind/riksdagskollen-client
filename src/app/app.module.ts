@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ApiService } from './Shared/api.service';
 import { Ledamot, LedamotProcent, Parti, PartiProcent, PersonR  } from './Shared/classes.service';
 import { BarComponent  } from './Shared/bar.component';
+import { PieComponent  } from './Shared/pie.component';
 import { DataManagerService  } from './Shared/dataManager.service';
 
 
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     PartyComponent,
     NavbarComponent,
     FooterComponent,
-    BarComponent
+    BarComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,

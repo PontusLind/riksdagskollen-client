@@ -12,6 +12,8 @@ import { error } from 'util';
 })
 export class CommissionerComponent implements OnInit {
   selectedCommissioner: string;
+  data: object;
+  topText: string = "Parti";
 
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
@@ -21,7 +23,7 @@ export class CommissionerComponent implements OnInit {
     if (this.selectedCommissioner != undefined)   {
 
       this.api.getLedamot(this.selectedCommissioner).subscribe(
-        (ledamot : Ledamot []) => console.log(ledamot),
+        (ledamot : Ledamot []) => this.data = ledamot,
         (error) => console.log(error)
       );
       

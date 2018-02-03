@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
         this.data = this.dataManager.transformPartiProcent(partiProcent);
         },
         (error) => console.log(error),
-  
     );
     
     if (this.selectedCommissioner != undefined) {

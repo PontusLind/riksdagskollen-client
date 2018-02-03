@@ -11,6 +11,8 @@ import { error } from 'util';
 })
 export class PartyComponent implements OnInit {
   selectedParty: string;
+  data: object;
+  topText: string = "Parti";
 
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
@@ -19,7 +21,7 @@ export class PartyComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.selectedParty = params['selectedParty']);
     if (this.selectedParty != undefined) {
       this.api.getParti(this.selectedParty).subscribe(
-        (parti : Parti) => console.log(parti),
+        (parti : Parti) => {this.data = parti},
         (error) => console.log(error)
       );    
     }
