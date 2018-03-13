@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
+import { Routes, RouterModule, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
@@ -18,7 +18,14 @@ import { ApiService } from './Shared/api.service';
 import { Ledamot, LedamotProcent, Parti, PartiProcent, PersonR  } from './Shared/classes.service';
 import { BarComponent  } from './Shared/bar.component';
 import { PieComponent  } from './Shared/pie.component';
+import { Pie2Component  } from './Shared/pie2.component';
 import { DataManagerService  } from './Shared/dataManager.service';
+import { PersonCardComponent } from './Shared/person-card.component';
+import { FilterPipe} from './Shared/filter.pipe';
+import { ListComponent } from './Shared/list.component';
+import { PartyButtenComponent } from './Shared/partyButton.component';
+import { FilterByPartyPipe} from './Shared/filterByParty.pipe';
+import { FilterLimitToPipe} from './Shared/filterLimitTo.pipe';
 
 
 const appRoutes: Routes = [
@@ -42,7 +49,14 @@ const appRoutes: Routes = [
     NavbarComponent,
     FooterComponent,
     BarComponent,
-    PieComponent
+    PieComponent,
+    PersonCardComponent,
+    FilterPipe,
+    Pie2Component,
+    ListComponent,
+    PartyButtenComponent,
+    FilterByPartyPipe,
+    FilterLimitToPipe
   ],
   imports: [
     BrowserModule,

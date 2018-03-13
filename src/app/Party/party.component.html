@@ -1,3 +1,49 @@
-<div *ngIf="data != undefined">
-  <app-pie [data] = "data" [topText]="topText"></app-pie>
+<div *ngIf="selectedParty != undefined">
+
+<app-pie2 [searchQuery]="searchQuery"></app-pie2>
+
 </div>
+<div class="container">
+<div class="row">
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'v'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'s'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'mp'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'c'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'l'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'m'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'kd'"></app-partyButten>
+    </div>
+    <div class="col-6 col-md-3">
+        <app-partyButten [partyQuery]="'sd'"></app-partyButten>
+    </div>
+</div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+
+<app-list [best]="true"></app-list>
+</div>
+
+<div class="col">
+
+<app-list [best]="false"></app-list>
+</div>
+</div>
+
+

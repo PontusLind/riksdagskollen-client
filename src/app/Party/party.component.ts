@@ -10,6 +10,7 @@ import { error } from 'util';
   styleUrls: ['./party.component.css']
 })
 export class PartyComponent implements OnInit {
+  searchQuery : string = "selectedParty";
   selectedParty: string;
   data: object;
   topText: string = "Parti";
@@ -17,14 +18,7 @@ export class PartyComponent implements OnInit {
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
-    this.selectedParty = this.route.snapshot.params['selectedParty'];
     this.route.params.subscribe((params: Params) => this.selectedParty = params['selectedParty']);
-    if (this.selectedParty != undefined) {
-      this.api.getParti(this.selectedParty).subscribe(
-        (parti : Parti) => {this.data = parti},
-        (error) => console.log(error)
-      );    
-    }
   }
 
 }

@@ -1,3 +1,18 @@
-<div *ngIf="data != undefined">
-  <app-pie [data] = "data" [topText]="topText"></app-pie>
+<input [(ngModel)]="searchText" placeholder="search text goes here">
+
+<div *ngIf="searchText != undefined">
+<ul *ngIf="searchText.length > 2">
+  <li *ngFor="let c of characters | filter : searchText">
+    <a (click)="onCharacter(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) </a>
+  </li>
+</ul>
 </div>
+
+<div *ngIf="selectedCommissioner != undefined">
+
+<app-pie2 [searchQuery]="searchQuery"></app-pie2>
+ 
+</div>
+
+<app-person-card></app-person-card>
+

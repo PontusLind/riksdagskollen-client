@@ -7,10 +7,11 @@ import 'rxjs/Rx';
 export class ApiService {
     serverURL: string = "http://localhost:64019/api/";
     riksdagsURL: string = "";
-    
+    ledarmot: any [];
     
     getRiksdagsURL(id:string) {
-        this.riksdagsURL = "http://data.riksdagen.se/personlista/?iid=" + id + "&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&termlista=";
+        this.riksdagsURL = "http://data.riksdagen.se/personlista/?iid=" + id + "&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json=";
+        console.log(this.riksdagsURL);
     }
 
     constructor(private http: Http){
@@ -24,6 +25,16 @@ export class ApiService {
                 return data;
             }); 
     }
+
+    getLedamotProcent(){
+        return this.http.get(this.serverURL + "LedamotProcents")
+        .map(
+            (response : Response) => {
+                this.ledarmot = response.json();
+                return this.ledarmot;
+            }); 
+    }
+
     getLedamot(ledamot: string){
         return this.http.get(this.serverURL + "Ledamots/" + ledamot)
         .map(

@@ -59,6 +59,36 @@ import { DataManagerService } from './dataManager.service';
         console.log(this.datasets);        
       }
     }
+
+  //   ngOnInit() {
+  //     this.route.params.subscribe((params: Params) => {this.selectedCommissioner = params['selectedCommissioner'], this.apiCall(), this.makePieChart(this.data) });
+  //   }
+
+  //   makePieChart(person : any[]){
+  //     if (this.data != undefined) {
+  //       let partyByYear : any [] = [];
+  //       person.forEach(p => {
+  //         partyByYear.push([p.ja, p.nej, p.avstår, p.frånvarande ])
+  //       });
+  //       console.log(partyByYear);
+  //       this.datasets = [
+  //         {
+  //           data: this.dataManager.percentage(partyByYear)
+  //       }];
+  //       this.renderGraf = true;
+  //       console.log(this.datasets);  
+  //   }
+  // }
+
+  //   apiCall(){
+  //     if (this.selectedCommissioner != undefined)   {
+  
+  //       this.api.getLedamot(this.selectedCommissioner).subscribe(
+  //         (ledamot : Ledamot []) => {this.data = ledamot, console.log(ledamot)},
+  //         (error) => console.log(error)
+  //       );
+  //     }
+  //   }
       
 
 }
