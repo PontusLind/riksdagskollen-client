@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../Shared/api.service';
 import { DataManagerService } from '../Shared/dataManager.service';
 // import { BarComponent } from '../Shared/bar.component';
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   topText: string = "topText";
   selectedCommissioner: string;
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private dataManager : DataManagerService) {}
+  constructor(private route: ActivatedRoute, private api: ApiService, private dataManager : DataManagerService, private router: Router) {}
 
   ngOnInit() {
     this.selectedCommissioner = this.route.snapshot.params['selectedCommissioner'];
@@ -52,4 +52,9 @@ export class HomeComponent implements OnInit {
       return this._partiProcent;
     }; 
   }  
+
+  onCharacter(id) {
+    this.router.navigate(['/om']);
+  }
+
 }

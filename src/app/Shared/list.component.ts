@@ -18,7 +18,7 @@ import { FilterLimitToPipe } from './filterLimitTo.pipe';
   </div>
   <ul class="list-group list-group-flush">
     <li *ngFor="let c of listed | byParty : this.selectedParty | limitTo : 5" class="list-group-item" >
-    <a (click)="onClic(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) {{100 - c.b}}%</a>    
+    <a (click)="onClic(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) {{(100 - c.b).toFixed(1)}}%</a>    
     </li>
   </ul>
 </div>
