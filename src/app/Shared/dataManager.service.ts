@@ -166,6 +166,52 @@ export class DataManagerService {
         return [(a1/l).toFixed(1), (a2/l).toFixed(1), (a3/l).toFixed(1), (a4/l).toFixed(1)];
     }
 
+    filterData(partys: any[])
+    {
+        var temp : any[] = [];
+        partys.forEach(element => {
+            if(element.label != "-")
+                temp.push(element);
+        });
+        return temp;
+    }
+
+    orderData(partys: any [])
+    {
+        var temp : any[] = [7];
+        partys.forEach(e => {
+            switch (e.label.toUpperCase()) {
+                case "V":
+                    return temp[0] = e;
+    
+                case "S":
+                    return temp[1] = e;
+    
+                case "MP":
+                    return temp[2] = e;
+    
+                case "C":
+                    return temp[3] = e;
+    
+                case "L":
+                    return temp[4] = e;
+    
+                case "M":
+                    return temp[5] = e;
+    
+                case "KD":
+                    return temp[6] = e;
+    
+                case "SD":
+                    return temp[7] = e;
+    
+                default:
+                    return "-";
+    
+            }
+        });
+        return temp;
+    }
 }
 
 class Party {

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     <div>
   <canvas
       baseChart
-      [chartType]="'bar'"
+      [chartType]="'horizontalBar'"
       [datasets]="datasets"
       [labels]="label"
       [options]="chartOptions"
@@ -29,50 +29,52 @@ import { Router } from '@angular/router';
       label: any [] =  [];
       @Input() data: any [];
       @Input() topText: string ;
-      dataLabel: string ;
-      chartData: ChartData = new ChartData;
       datasets: any [] = [];
       color : any [] = [];
-      temp : any [] = [];
-
-      constructor(private dataManager : DataManagerService, private router: Router) {}
+      chartOptions : any; 
+      constructor(private dataManager : DataManagerService, private router: Router) {
+        this.chartOptions = {
+          responsive: true,
+          options: {
+            title:{
+              display: false
+            }
+          },    
+          tooltips :{
+            enabled: true
+          } ,  
+          layout: {
+            padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0
+            }
+        }
+        };
+      }
 
       ngOnChanges(changes) {
-        if (changes.data.currentValue != undefined) {        
+        if (changes.data.currentValue != undefined) {
+          var d = changes.data.currentValue;
+          d = this.dataManager.filterData(d);
+          d = this.dataManager.orderData(d);
           this.color[0] = {backgroundColor : [], borderColor : [], borderWidth : 1}
           this.datasets.push({label: "Procent", data : [] = []});
-          changes.data.currentValue.forEach(l => {
-            
+          d.forEach(l => {         
             this.label.push(this.dataManager.getPartyFullName(l.label));
             this.datasets[0].data.push(l.data.toFixed(1));
             this.color[0].backgroundColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"0.8)");
             this.color[0].borderColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"1)");
           });
-
         }
       }
 
-        chartOptions = {
-          responsive: true,
-          title: {
-            display: false        }
-        };
-
         onChartClick(event) {
-          console.log(event);
           if(event.active[0]!= null)
           {
             this.router.navigate(['/parti/', this.dataManager.getPartyInitials(event.active[0]._model.label)]);
           }
         }
+        
     }
-
-    class ChartData
-    {
-      data: any [];
-      label: string [];
-      backgroundColor : string [];
-      borderColor: string [];
-      borderWidth: number;
-    }
-
