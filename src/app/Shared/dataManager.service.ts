@@ -41,62 +41,50 @@ export class DataManagerService {
         return chartData;
     }
 
-    setColorsAccordingToParty(p: { data: number, label: string }) {
+    setColorsAccordingToParty(label: string ) {
         var colure;
-        var label;
 
 
-        switch (p.label) {
+        switch (label.toUpperCase()) {
             case "V": {
-                label = "Vänsterpartiet";
-                colure = 'rgba(255, 0, 0';
+                colure = "rgba(255, 0, 0, ";
                 break;
             }
             case "S": {
-                label = "Socialdemokraterna";
-                colure = "rgba(230, 10, 10";
+                colure = "rgba(230, 10, 10, ";
                 break;
             }
             case "MP": {
-                label = "Miljöpartiet";
-                colure = "rgba(0, 255, 0";
+                colure = "rgba(0, 255, 0, ";
                 break;
             }
             case "C": {
-                label = "Centerpartiet";
-                colure = "rgba(0, 240, 0";
+                colure = "rgba(0, 240, 0, ";
                 break;
             }
             case "L": {
-                label = "Liberalerna";
-                colure = "rgba(0, 0, 204";
+                colure = "rgba(0, 0, 204, ";
                 break;
             }
             case "M": {
-                label = "Moderaterna";
-                colure = "rgba(0, 0, 255";
+                colure = "rgba(0, 0, 255, ";
                 break;
             }
             case "KD": {
-                label = "Kristdemokraterna";
-                colure = "rgba(0, 128, 255";
+                colure = "rgba(0, 128, 255, ";
                 break;
             }
             case "SD": {
-                label = "Sverigedemokraterna";
-                colure = "rgba(255, 255";
+                colure = "rgba(255, 255, 51, ";
                 break;
             }
             default: {
-                label = "-";
-                colure = "rgba(128, 128, 128";
+                colure = "rgba(128, 128, 128, ";
                 break;
             }
         }
 
-        let dataset: DataSets = new DataSets(label, colure + ",0.2)", colure + ",1)", colure + ",0.8)", colure + ",1)", [p.data])
-
-        return dataset
+        return colure;
     };
 
     getPartyFullName(p: string) {
@@ -131,6 +119,37 @@ export class DataManagerService {
         }
     };
 
+    getPartyInitials(p: string) {
+        switch (p) {
+            case "Vänsterpartiet":
+                return "V";
+
+            case "Socialdemokraterna":
+                return "S";
+
+            case "Miljöpartiet":
+                return "MP";
+
+            case "Centerpartiet":
+                return "C";
+
+            case "Liberalerna":
+                return "L";
+
+            case "Moderaterna":
+                return "M";
+
+            case "Kristdemokraterna":
+                return "KD";
+
+            case "Sverigedemokraterna":
+                return "SD";
+
+            default:
+                return "-";
+        }
+    };
+
     percentage(p : {alt1 : number, alt2 : number, alt3 : number, alt4 : number} [] ){
         let l = p.length
         let a1 = 0;
@@ -148,8 +167,6 @@ export class DataManagerService {
     }
 
 }
-
-
 
 class Party {
     party: string;

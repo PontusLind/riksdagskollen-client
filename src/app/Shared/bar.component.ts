@@ -3,6 +3,8 @@ import { Chart } from 'chart.js';
 import { concat } from 'rxjs/observable/concat';
 import { SimpleChange } from '@angular/core/src/change_detection/change_detection_util';
 import { DataManagerService } from './dataManager.service';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-bar',
@@ -14,6 +16,7 @@ import { DataManagerService } from './dataManager.service';
       [datasets]="datasets"
       [labels]="label"
       [options]="chartOptions"
+      [colors]="color"
       [legend]="true"
       (chartClick)="onChartClick($event)">
   </canvas>
@@ -23,70 +26,44 @@ import { DataManagerService } from './dataManager.service';
 
   export class BarComponent implements OnChanges{
     
-      label: string [] =  [];
+      label: any [] =  [];
       @Input() data: any [];
       @Input() topText: string ;
       dataLabel: string ;
       chartData: ChartData = new ChartData;
       datasets: any [] = [];
+      color : any [] = [];
+      temp : any [] = [];
 
-      constructor(private dataManager : DataManagerService) {}
+      constructor(private dataManager : DataManagerService, private router: Router) {}
 
       ngOnChanges(changes) {
-        console.log(changes.data.currentValue);
         if (changes.data.currentValue != undefined) {        
+          this.color[0] = {backgroundColor : [], borderColor : [], borderWidth : 1}
+          this.datasets.push({label: "Procent", data : [] = []});
           changes.data.currentValue.forEach(l => {
-            this.label.push(l.label);
-            console.log(this.dataManager.setColorsAccordingToParty(l))
-            this.datasets.push(this.dataManager.setColorsAccordingToParty(l));
-
-            // if (this.datasets == undefined) {
-            //   console.log(this.dataManager.setColorsAccordingToParty(l))
-            //   this.datasets  = [this.dataManager.setColorsAccordingToParty(l)]
-            // }
-            // else {
-            //   console.log(this.dataManager.setColorsAccordingToParty(l))
-            //   this.datasets.push(this.dataManager.setColorsAccordingToParty(l));
-            // }
+            
+            this.label.push(this.dataManager.getPartyFullName(l.label));
+            this.datasets[0].data.push(l.data.toFixed(1));
+            this.color[0].backgroundColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"0.8)");
+            this.color[0].borderColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"1)");
           });
-          console.log(this.datasets);
-          // console.log("Label " + this.label);
-          // this.chartData.label = this.label;
-          // this.chartData.data = [];
-          // changes.data.currentValue.forEach(d => {
-          //   this.chartData.data = changes.data.currentValue
-          // });
-          // console.log(this.chartData);
 
-        //   this.datasets = [
-        //     {
-        //         label: "My First dataset",
-        //         backgroundColor: "rgba(255,99,132,0.2)",
-        //         borderColor: "rgba(0,99,132,1)",
-        //         borderWidth: 1,
-        //         hoverBackgroundColor: "rgba(0,99,132,1)",
-        //         hoverBorderColor: "rgba(0,99,132,1)",
-        //         data: [59],
-        //     },
-        //     {
-        //       label: "My First dataset",
-        //         backgroundColor: ["rgba(0,99,132,1)"],
-        //         borderColor: ["rgba(0,99,132,1)"],
-        //         borderWidth: 1,
-        //         hoverBackgroundColor: ["rgba(0,99,132,1)"],
-        //         hoverBorderColor: ["rgba(0,99,132,1)"],
-        //         data: [59],
-        //     }
-        // ];
         }
       }
 
         chartOptions = {
-          responsive: true
+          responsive: true,
+          title: {
+            display: false        }
         };
 
         onChartClick(event) {
           console.log(event);
+          if(event.active[0]!= null)
+          {
+            this.router.navigate(['/parti/', this.dataManager.getPartyInitials(event.active[0]._model.label)]);
+          }
         }
     }
 

@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 
 export class ApiService {
-    serverURL: string = "http://localhost:64019/api/";
+    serverURL: string = "http://projectfreedomserver.azurewebsites.net/api/";
     riksdagsURL: string = "";
     ledarmot: any [];
     
