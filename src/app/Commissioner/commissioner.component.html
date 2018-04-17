@@ -4,7 +4,7 @@
   <h2 class="padding">Sök efter ledamöter</h2>
 </div>
 <div class="col-12">
-  <input class="searchBox" [(ngModel)]="searchText" placeholder="Sök efter ledamöter">
+  <input class="input-lg" [(ngModel)]="searchText" placeholder="Sök efter ledamöter">
   
   <div *ngIf="searchText != undefined">
     <ul *ngIf="searchText.length > 2">

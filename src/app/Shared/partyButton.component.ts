@@ -11,7 +11,7 @@ import { NgStyle } from '@angular/common';
     <a id="stuff" [ngStyle]="{'background-color': coral}" (click)="onCharacter(partyQuery)">{{partyQuery.toUpperCase( )}}</a>
     </div>
     `,
-    styles: ['#stuff{margin: 2px; border-radius: 12px; padding: 5px; border: 2px solid; font-weight: normal; align-content: space-around; display: flex; justify-content: center;} #stuff:hover{background-color: rgb(220,220,220);}']
+    styles: ['#stuff{margin: 2px; border-radius: 12px; padding: 5px; border: 2px solid; font-weight: normal; align-content: space-around; display: flex; justify-content: center;} #stuff:hover{background-color: #f8f9fa;}']
     
 
 })
@@ -24,5 +24,3 @@ export class PartyButtenComponent  {
     this.router.navigate(['/parti/', id]);
   }
 }
-
-

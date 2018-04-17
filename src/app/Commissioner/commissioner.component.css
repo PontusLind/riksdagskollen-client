@@ -1,9 +1,8 @@
 @import "../app.component.css";
 
-.searchBox{
-    justify-content: center;
-}
-
 input{
     border-radius: 3px;
+    justify-content: center;
+    max-width:  400px;
+    width: 100%;
 }

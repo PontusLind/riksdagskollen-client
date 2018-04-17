@@ -3,12 +3,12 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #2f4f4f;
-    color: white;
+    background-color: #f8f9fa;
+    color: #212529;
     text-align: center;
  }
 
  p {
-    color: white;
+    color: #212529;
     text-align: center;
 }
