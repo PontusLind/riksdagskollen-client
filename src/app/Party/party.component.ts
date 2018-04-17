@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../Shared/api.service';
 import { Parti, Ledamot } from '../Shared/classes.service';
 import { error } from 'util';
+import { DataManagerService } from '../Shared/dataManager.service';
+
 
 @Component({
   selector: 'app-party',
@@ -15,10 +17,9 @@ export class PartyComponent implements OnInit {
   data: object;
   topText: string = "Parti";
 
-  constructor(private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private route: ActivatedRoute, private api: ApiService, private dataManager : DataManagerService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => this.selectedParty = params['selectedParty']);
   }
-
 }

@@ -15,6 +15,7 @@ import { DataManagerService } from './dataManager.service';
       [labels]="labels"
       [datasets]="datasets"
       [colors]="colorsOverride"
+      [options]="chartOptions"
       [chartType]="type"
       ></canvas>
   </div>
@@ -24,6 +25,7 @@ import { DataManagerService } from './dataManager.service';
 
 export class Pie2Component implements OnInit {
   @Input() searchQuery: string;
+  chartOptions : any; 
 
   labels: string[] = ['Ja', 'Nej', 'Avstår', 'Frånvarande'];
   type: string = 'doughnut';
@@ -42,9 +44,30 @@ export class Pie2Component implements OnInit {
       "#5D4991"
     ]
   }];
-  constructor(private dataManager: DataManagerService, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private dataManager: DataManagerService, private route: ActivatedRoute, private api: ApiService) {
+    this.chartOptions = {
+      maintainAspectRatio: true,
+      responsive: true,
+      options: {
+        title:{
+          display: false
+        }
+      },    
+      tooltips :{
+        enabled: true
+      } ,  
+      layout: {
+        padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        }
+    }
+    };
+   }
+   
   ngOnInit() {
-    console.log(this.datasets);
     if (this.searchQuery == "selectedCommissioner") {
       this.route.params.subscribe((params: Params) => { this.apiCallCommissioner(params['selectedCommissioner'])});
     } else if (this.searchQuery == "selectedParty") {

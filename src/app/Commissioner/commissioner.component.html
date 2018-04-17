@@ -1,3 +1,4 @@
+<h2>Sök efter ledamöter</h2>
 <input [(ngModel)]="searchText" placeholder="search text goes here">
 
 <div *ngIf="searchText != undefined">
@@ -9,10 +10,13 @@
 </div>
 
 <div *ngIf="selectedCommissioner != undefined">
-
-<app-pie2 [searchQuery]="searchQuery"></app-pie2>
- 
+  <div class="row">  
+    <div class="col-12 col-md-8">
+      <app-pie2 [searchQuery]="searchQuery"></app-pie2>
+    </div> 
+    <div class="col-12 col-md-4">      
+      <app-person-card></app-person-card>
+    </div>
+  </div>
 </div>
-
-<app-person-card></app-person-card>
 

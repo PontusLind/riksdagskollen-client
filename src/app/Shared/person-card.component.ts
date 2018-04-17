@@ -9,8 +9,8 @@ import { DataManagerService } from './dataManager.service';
   template: `
   <div *ngIf="data != undefined">
 
-  <div class="card" style="width: 20rem;">
-  <img class="card-img-top" [src]="data.personlista.person.bild_url_192" alt="Card image cap" style="width:300px;">
+  <div class="card">
+  <img class="card-img-top" [src]="data.personlista.person.bild_url_192" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">{{data.personlista.person.tilltalsnamn}} {{data.personlista.person.efternamn}}</h4>
   </div>
