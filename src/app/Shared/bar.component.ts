@@ -61,8 +61,12 @@ import { Router } from '@angular/router';
           d = this.dataManager.orderData(d);
           this.color[0] = {backgroundColor : [], borderColor : [], borderWidth : 1}
           this.datasets.push({label: "Procent", data : [] = []});
-          d.forEach(l => {         
-            this.label.push(this.dataManager.getPartyFullName(l.label));
+          d.forEach(l => {        
+            if(screen.availWidth > 570)
+              this.label.push(this.dataManager.getPartyFullName(l.label));
+            else
+              this.label.push(l.label);
+
             this.datasets[0].data.push(l.data.toFixed(1));
             this.color[0].backgroundColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"0.8)");
             this.color[0].borderColor.push(this.dataManager.setColorsAccordingToParty(l.label) +"1)");

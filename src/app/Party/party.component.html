@@ -2,17 +2,17 @@
 
 
 <div *ngIf="selectedParty != undefined">
-    <h2>{{dataManager.getPartyFullName(this.selectedParty)}}</h2>
-    <p>Diagram om hur {{dataManager.getPartyFullName(this.selectedParty)}} har röstat</p>
+    <h2 class="padding">{{dataManager.getPartyFullName(this.selectedParty)}}</h2>
+    <p>Diagram som vissar hur {{dataManager.getPartyFullName(this.selectedParty)}} har röstat</p>
 <app-pie2 [searchQuery]="searchQuery"></app-pie2>
 </div>
 
 
     <div *ngIf="selectedParty == undefined">
-        <h2>Välj ett parti</h2>
+        <h2 class="padding">Välj ett parti</h2>
     </div>
     <div *ngIf="selectedParty != undefined">
-        <h2>Välj ett annat parti</h2>
+        <h2 class="padding">Välj ett annat parti</h2>
     </div>
 
 <div class="container">
@@ -45,19 +45,19 @@
 </div>
 
 <div *ngIf="selectedParty == undefined">
-        <h2>Lista med ledamöter för alla partier</h2>
+        <h2 class="padding">Lista med ledamöter för alla partier</h2>
     </div>
     <div *ngIf="selectedParty != undefined">
-        <h2>Lista med ledamöter för {{dataManager.getPartyFullName(this.selectedParty)}}</h2>
+        <h2 class="padding">Lista med ledamöter för {{dataManager.getPartyFullName(this.selectedParty)}}</h2>
     </div>
 
 <div class="row">
-    <div class="col">
+    <div class="col-sm-12 col-md-6">
 
 <app-list [best]="true"></app-list>
 </div>
 
-<div class="col">
+<div class="col-sm-12 col-md-6">
 
 <app-list [best]="false"></app-list>
 </div>

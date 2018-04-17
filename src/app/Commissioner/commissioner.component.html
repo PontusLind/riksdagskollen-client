@@ -1,12 +1,19 @@
-<h2>Sök efter ledamöter</h2>
-<input [(ngModel)]="searchText" placeholder="search text goes here">
+<div class="row">  
 
-<div *ngIf="searchText != undefined">
-<ul *ngIf="searchText.length > 2">
-  <li *ngFor="let c of characters | filter : searchText">
-    <a (click)="onCharacter(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) </a>
-  </li>
-</ul>
+<div class="col-12">
+  <h2 class="padding">Sök efter ledamöter</h2>
+</div>
+<div class="col-12">
+  <input class="searchBox" [(ngModel)]="searchText" placeholder="Sök efter ledamöter">
+  
+  <div *ngIf="searchText != undefined">
+    <ul *ngIf="searchText.length > 2">
+      <li *ngFor="let c of characters | filter : searchText">
+        <a (click)="onCharacter(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) </a>
+      </li>
+    </ul>
+  </div>
+</div>
 </div>
 
 <div *ngIf="selectedCommissioner != undefined">

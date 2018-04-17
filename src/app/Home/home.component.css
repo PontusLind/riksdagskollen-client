@@ -1,0 +1,10 @@
+@import "../app.component.css";
+
+a:hover {
+    color: blue !important;
+}
+
+a {
+    text-decoration: underline !important;
+}
+

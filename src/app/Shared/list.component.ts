@@ -18,14 +18,15 @@ import { FilterLimitToPipe } from './filterLimitTo.pipe';
   </div>
   <ul class="list-group list-group-flush">
     <li *ngFor="let c of listed | byParty : this.selectedParty | limitTo : 5" class="list-group-item" >
-    <a (click)="onClic(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti}}) {{(100 - c.b).toFixed(1)}}%</a>    
+    <a (click)="onClic(c.intressentId)">{{c.fornamn}} {{c.efternamn}} ({{c.parti.toUpperCase( )}}) {{(100 - c.b).toFixed(1)}}%</a>    
     </li>
   </ul>
 </div>
 
 </div>
+  `,
+  styles: ['a:hover { color: blue !important;} a {text-decoration: underline !important;}']
 
-  `
 })
 export class ListComponent implements OnInit {
   selectedParty : string;
@@ -33,7 +34,6 @@ export class ListComponent implements OnInit {
   titel ="";
   @Input() best: boolean;
   listed: any [];
-  // <li class="list-group-item" *ngFor="let list of listed">{{list.}}</li>
 
   constructor(private route: ActivatedRoute, private api: ApiService, private dataManager : DataManagerService, private router: Router) { }
 
