@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     selector: 'app-bar',
     template: `
     <div>
-  <canvas
+  <canvas style="min-height: 300px"
       baseChart
       [chartType]="'horizontalBar'"
       [datasets]="datasets"
@@ -35,6 +35,7 @@ import { Router } from '@angular/router';
       constructor(private dataManager : DataManagerService, private router: Router) {
         this.chartOptions = {
           responsive: true,
+          maintainAspectRatio: false,
           options: {
             title:{
               display: false

@@ -10,8 +10,10 @@ import { DataManagerService } from './dataManager.service';
   selector: 'app-pie2',
   template: `
     <div *ngIf="datasets.length != 0 && datasets != undefined">
-    <div style="display: block">
-    <canvas baseChart
+    <div style="display: block;" >
+    <canvas
+      style="min-width: {{innerWidth}}px;" 
+      baseChart
       [labels]="labels"
       [datasets]="datasets"
       [colors]="colorsOverride"
@@ -25,7 +27,9 @@ import { DataManagerService } from './dataManager.service';
 
 export class Pie2Component implements OnInit {
   @Input() searchQuery: string;
-  chartOptions : any; 
+  chartOptions : any;
+  innerWidth: any;
+
 
   labels: string[] = ['Ja', 'Nej', 'Avstår', 'Frånvarande'];
   type: string = 'doughnut';
@@ -65,6 +69,14 @@ export class Pie2Component implements OnInit {
         }
     }
     };
+    if(window.screen.width < 500)
+    {
+      this.innerWidth = (window.screen.width);
+    }
+    else
+    {
+      this.innerWidth = 500;
+    }
    }
    
   ngOnInit() {
