@@ -9,6 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { AbuteComponent } from './Abute/abute.component';
+import { FAQComponent } from './abute/FAQ.component';
 import { CommissionerComponent } from './commissioner/commissioner.component';
 import { HomeComponent } from './home/home.component';
 import { PartyComponent } from './party/party.component';
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AbuteComponent,
+    FAQComponent,
     CommissionerComponent,
     HomeComponent,
     PartyComponent,
