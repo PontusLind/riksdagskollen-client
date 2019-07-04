@@ -10,9 +10,8 @@ import { DataManagerService } from './dataManager.service';
   selector: 'app-pie2',
   template: `
     <div *ngIf="datasets.length != 0 && datasets != undefined">
-    <div style="display: block;" >
+    <div>
     <canvas
-      style="min-width: {{innerWidth}}px;" 
       baseChart
       [labels]="labels"
       [datasets]="datasets"
@@ -52,6 +51,9 @@ export class Pie2Component implements OnInit {
     this.chartOptions = {
       maintainAspectRatio: true,
       responsive: true,
+      legend: {
+        position: 'top',
+      },  
       options: {
         title:{
           display: false
@@ -66,7 +68,8 @@ export class Pie2Component implements OnInit {
             right: 0,
             top: 0,
             bottom: 0
-        }
+        },
+        
     }
     };
     if(window.screen.width < 500)
